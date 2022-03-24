@@ -21,9 +21,9 @@ class Trem extends Thread {
 				}
 			}
 
-			long time = System.currentTimeMillis();
+			
 
-			System.out.println("Trem pegou a carga e iniciou viagem");
+			
 
 			try {
 				Semaforo.mutex.acquire();
@@ -33,14 +33,17 @@ class Trem extends Thread {
 			if (armazem.Armazem_atual >= armazem.N) {// Se o número de caixas já empacotadas for maior do que N
 
 				armazem.Armazem_atual = armazem.Armazem_atual - armazem.N; // Retira o número de caixas que o trem
-																			// precisa | PARTE CRITICA
+				Semaforo.armazemLim.release(armazem.N); // acorda empacotador															// precisa | PARTE CRITICA
+				System.out.println("Trem pegou a carga e iniciou viagem");
+				System.out.println("Número de caixas atualmente: " + armazem.Armazem_atual);
 
 			}
 
 			Semaforo.mutex.release();
 			
-			System.out.println("Número de caixas no armazem atualmente: " + armazem.Armazem_atual);
-
+			
+						
+			long time = System.currentTimeMillis();
 			while (System.currentTimeMillis() - time < tv / 2) {
 			}
 
@@ -51,7 +54,7 @@ class Trem extends Thread {
 			}
 
 			System.out.println("Trem chegou em A novamente");
-			Semaforo.armazemLim.release(); // acorda empacotador
+			
 		}
 
 	}
