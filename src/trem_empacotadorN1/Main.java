@@ -1,22 +1,35 @@
 package trem_empacotadorN1;
+
+import java.awt.EventQueue;
 import java.util.concurrent.Semaphore;
+import GUI.Interface;
+
+import javax.swing.JFrame;
+import java.io.File;
+import java.io.IOException;
+import javax.sound.sampled.*;
+
 
 
 class Main extends Thread { 
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException{
+
 		
-		Trem piui = new Trem (10); // trem demora x tempo para ir de A para B
 		
-		empacotador t1 = new empacotador ("e1",3); 
-		empacotador t2 = new empacotador ("e2",1); 
-		empacotador t3 = new empacotador ("e3",2);
-		
-		piui.start();
-		
-		t1.start (); 
-		t2.start ();
-		t3.start();
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Interface window = new Interface();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+			
 		
 	}
 }
+
+

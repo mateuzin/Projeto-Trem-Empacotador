@@ -2,7 +2,7 @@ package trem_empacotadorN1;
 
 import java.util.concurrent.Semaphore;
 
-class Trem extends Thread {
+public class Trem extends Thread {
 	public double tv; // tv = tempo de viagem
 
 	public Trem(double tv) {
@@ -19,7 +19,7 @@ class Trem extends Thread {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-			}
+			} 
 
 			
 

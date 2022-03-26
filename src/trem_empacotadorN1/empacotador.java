@@ -1,12 +1,11 @@
 package trem_empacotadorN1;
 
-class empacotador extends Thread {
+public class empacotador extends Thread {
 	
-	public double te;
+	public int te;
 
-	public empacotador(String id, double te) {
+	public empacotador(int te) {
 		
-		super(id); // identificador do empacotador
 		this.te = te * 1000; // tempo de empacotamento para segundos
 		
 	}
@@ -19,17 +18,16 @@ class empacotador extends Thread {
 			while (System.currentTimeMillis() - time < te) {} //
 			
 			try {
+				if(Semaforo.armazemLim.availablePermits()==0) {
+					
+					System.out.println("Armazem lotado, " + "Empacotador " + getName() + " " + "  vai dormir ");
+					
+				}
 				Semaforo.armazemLim.acquire();// bota empacotador para dormir ao chegar no Limite do armazem
 
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-
-			/*if (armazem.Armazem_atual >= armazem.M) {
-				
-				System.out.println("Armazem lotado, " + "Empacotador " + getName() + " " + "  vai dormir ");
-					
-			}*/
 
 			try {
 				Semaforo.mutex.acquire();
