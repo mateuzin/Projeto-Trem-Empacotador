@@ -46,9 +46,7 @@ public class Interface extends JFrame{
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException{
-		
-	}
+	public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException{}
 
 	/**
 	 * Create the application.
@@ -131,6 +129,13 @@ public class Interface extends JFrame{
 					System.exit(0);
 					
 				}
+				
+				if(CargaTrem>MaxArmazem) {
+					JOptionPane.showMessageDialog(null,"Carga máxima do deposito deve ser maior do que a Carga do Trem");
+					JOptionPane.showMessageDialog(null,"Programa encerrando");
+					System.exit(0);
+				}
+				
 				Trem piui = new Trem (TempoTrem); // trem demora x tempo para ir de A para B
 				
 				aux = NumeroEmpacotadores.getSelectedIndex()+1;
@@ -148,6 +153,7 @@ public class Interface extends JFrame{
 							System.exit(0);
 						}
 						
+						
 						empacotador a1 = new empacotador (E1);
 						piui.start();
 						a1.start (); 
@@ -163,6 +169,7 @@ public class Interface extends JFrame{
 							JOptionPane.showMessageDialog(null,"Programa encerrando");
 							System.exit(0);
 						}
+						
 						
 						empacotador b1 = new empacotador (E1);
 						empacotador b2 = new empacotador (E2); 
@@ -183,6 +190,7 @@ public class Interface extends JFrame{
 							JOptionPane.showMessageDialog(null,"Programa encerrando");
 							System.exit(0);
 						}
+						
 						
 						empacotador c1 = new empacotador (E1);
 						empacotador c2 = new empacotador (E2); 
@@ -206,6 +214,7 @@ public class Interface extends JFrame{
 							JOptionPane.showMessageDialog(null,"Programa encerrando");
 							System.exit(0);
 						}
+						
 						
 						empacotador d1 = new empacotador (E1);
 						empacotador d2 = new empacotador (E2); 
@@ -232,6 +241,8 @@ public class Interface extends JFrame{
 							JOptionPane.showMessageDialog(null,"Programa encerrando");
 							System.exit(0);
 						}
+						
+						
 						empacotador e1 = new empacotador (E1);
 						empacotador e2 = new empacotador (E2); 
 						empacotador e3 = new empacotador (E3);
@@ -366,8 +377,9 @@ public class Interface extends JFrame{
 							System.exit(0);
 						}
 						
+						
 						empacotador i1 = new empacotador (E1);
-						empacotador i2 = new empacotador (E2); 
+						empacotador i2 = new empacotador (E2);
 						empacotador i3 = new empacotador (E3);
 						empacotador i4 = new empacotador (E4); 
 						empacotador i5 = new empacotador (E5); 
@@ -385,7 +397,7 @@ public class Interface extends JFrame{
 						i6.start();	
 						i7.start (); 
 						i8.start ();
-						i9.start();	
+						i9.start();
 						break;
 					case 10: 
 						try{
@@ -407,6 +419,8 @@ public class Interface extends JFrame{
 							JOptionPane.showMessageDialog(null,"Programa encerrando");
 							System.exit(0);
 						}
+						
+						
 						empacotador j1 = new empacotador (E1);
 						empacotador j2 = new empacotador (E2); 
 						empacotador j3 = new empacotador (E3);
@@ -428,8 +442,21 @@ public class Interface extends JFrame{
 						j8.start ();
 						j9.start();	
 						j10.start();
+						
 						break;
 				}
+
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							Interface2 window = new Interface2();
+							window.frame.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+				
 				
 			} //botão de prosseguir
 		});

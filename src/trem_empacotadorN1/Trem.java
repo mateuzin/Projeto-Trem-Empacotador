@@ -46,7 +46,8 @@ public class Trem extends Thread {
 			long time = System.currentTimeMillis();
 			while (System.currentTimeMillis() - time < tv / 2) {
 			}
-
+			
+			
 			System.out.println("Trem chegou em B");
 			System.out.println("Trem está voltando para A");
 
