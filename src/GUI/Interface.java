@@ -127,9 +127,8 @@ public class Interface extends JFrame {
 
 				for (int i = 1; i <= Interface.this.aux; ++i) {
 					try {
-						int emp = Integer
-								.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E" + i));
-						lista.add(new empacotador(i, emp, Interface.this));
+						int emp = Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E" + i));
+						lista.add(new empacotador(i, emp, Interface.this, Interface.this));
 					} catch (NumberFormatException var6) {
 						JOptionPane.showMessageDialog((Component) null, "Por favor insira valores númericos inteiros");
 						JOptionPane.showMessageDialog((Component) null, "Programa encerrando");
@@ -165,6 +164,13 @@ public class Interface extends JFrame {
 	public void changeImg(int empacotador, String img) {
 		if (this.window != null) {
 			this.window.changeImg(empacotador, img);
+		}
+
+	}
+	
+	public void Progress(int atual) {
+		if (this.window != null) {
+			this.window.progress(atual);
 		}
 
 	}

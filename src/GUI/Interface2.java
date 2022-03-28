@@ -5,6 +5,13 @@ import java.awt.LayoutManager;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JProgressBar;
+import java.awt.BorderLayout;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+
+import java.awt.Color;
 
 public class Interface2 extends JFrame {
 	public JFrame frame;
@@ -14,6 +21,7 @@ public class Interface2 extends JFrame {
 	public static String Inativo = "/GUI/empacotadorInativo.png";
 	public static String Voltando = "/GUI/empacotadorSemCaixa(voltando).png";
 	private JLabel[] empacotadores;
+	private JProgressBar progressBar;
 
 	public static void main(String[] args) {
 	}
@@ -28,6 +36,9 @@ public class Interface2 extends JFrame {
 		this.frame.setDefaultCloseOperation(3);
 		this.frame.setResizable(false);
 		this.frame.getContentPane().setLayout((LayoutManager) null);
+		frame.getContentPane().setLayout(null);
+		frame.getContentPane().setLayout(null);
+		frame.getContentPane().setLayout(null);
 		JLabel imagem_trem = new JLabel("");
 		imagem_trem.setIcon(new ImageIcon(Interface2.class.getResource("/GUI/trem.png")));
 		imagem_trem.setBounds(-14, 580, 168, 56);
@@ -37,22 +48,47 @@ public class Interface2 extends JFrame {
 		JLabel label;
 		for (int i = 0; i < 10; ++i) {
 			label = new JLabel("");
-			label.setIcon(new ImageIcon(Interface2.class.getResource(Empacotando)));
+			label.setIcon(new ImageIcon(Interface2.class.getResource(Inativo)));
 			label.setBounds(69 + 144 * i, 37, 64, 89);
 			this.frame.getContentPane().add(label);
 			this.empacotadores[i] = label;
 		}
+		
+		UIManager.put("ProgressBar.selectionBackground", Color.BLACK);
+		UIManager.put("ProgressBar.selectionForeground", Color.BLACK);
+		progressBar = new JProgressBar();
+		progressBar.setForeground(Color.GREEN);
+		progressBar.setStringPainted(true);
+		progressBar.setIndeterminate(false);
+		progressBar.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 30));
+		progressBar.setBounds(27, 389, 1446, 40);
+		progressBar.setMaximum(Interface.MaxArmazem);
+		progressBar.setString("Aguardando valores");
+		frame.getContentPane().add(progressBar);
 
 		JLabel Cenario = new JLabel("");
 		Cenario.setIcon(new ImageIcon(Interface2.class.getResource("/GUI/cenarioOK.jpg")));
 		Cenario.setBounds(0, 0, 1500, 750);
 		this.frame.getContentPane().add(Cenario);
-		label = new JLabel("New label");
-		label.setBounds(76, 278, 46, 14);
-		this.frame.getContentPane().add(label);
+		
+		
+		
+		
 	}
 
 	public void changeImg(int empacotador, String img) {
 		this.empacotadores[empacotador - 1].setIcon(new ImageIcon(Interface2.class.getResource(img)));
+	}
+	
+	public void progress(int atual) {
+		if(atual == Interface.MaxArmazem) {
+			this.progressBar.setString("ARMAZEM LOTADO");
+		}
+		else {
+			this.progressBar.setString("Número de caixas no deposito = " + String.valueOf(atual));
+		}
+		
+		this.progressBar.setValue(atual);
+		
 	}
 }
