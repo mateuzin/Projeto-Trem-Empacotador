@@ -1,58 +1,51 @@
 package trem_empacotadorN1;
 
+import GUI.Interface;
 import GUI.Interface2;
 
 public class empacotador extends Thread {
-	
+	private int id;
 	public int te;
-	public static String resposta = "/GUI/empacotadorEmpacotando.png";
+	public Interface mainInterface;
 
-	public empacotador(int te) {
-		
-		this.te = te * 1000; // tempo de empacotamento para segundos
-		
+	public empacotador(int id, int te, Interface mainInterface) {
+		this.id = id;
+		this.te = te * 1000;
+		this.mainInterface = mainInterface;
 	}
 
 	public void run() {
 		while (true) {
-
 			long time = System.currentTimeMillis();
 
-			while (System.currentTimeMillis() - time < te) {} //
-			
-			try {
-				if(Semaforo.armazemLim.availablePermits()==0) {
-					
-					System.out.println("Armazem lotado, " + "Empacotador " + getName() + " " + "  vai dormir ");
-					resposta = "/GUI/empacotadorDormindo.png";
-					
-				}
-				resposta = "/GUI/empacotadorDormindo.png";
-				Semaforo.armazemLim.acquire();// bota empacotador para dormir ao chegar no Limite do armazem
+			while (System.currentTimeMillis() - time < (long) this.te) {
+			}
 
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+			try {
+				if (Semaforo.armazemLim.availablePermits() == 0) {
+					System.out.println("Armazem lotado, Empacotador " + this.getName() + " " + "  vai dormir ");
+					this.mainInterface.changeImg(this.id, Interface2.Dormindo);
+				}
+
+				Semaforo.armazemLim.acquire(); //Dorme o empacotador 
+			} catch (InterruptedException var5) {
+				var5.printStackTrace();
 			}
 
 			try {
 				Semaforo.mutex.acquire();
-
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+			} catch (InterruptedException var4) {
+				var4.printStackTrace();
 			}
 
-			
-			armazem.Armazem_atual++; //PARTE CRITICA
-			
-			resposta = "/GUI/empacotadorDormindo.png";
-			System.out.println("Empacotador " + getName() + " " + "embalou uma caixa ");
+			++armazem.Armazem_atual;
+			this.mainInterface.changeImg(this.id, Interface2.Terminou);
+			System.out.println("Empacotador " + this.getName() + " " + "embalou uma caixa ");
 			System.out.println("Número de caixas no armazem atualmente: " + armazem.Armazem_atual);
-
 			Semaforo.mutex.release();
-
 			if (armazem.Armazem_atual >= armazem.N) {
-				Semaforo.armazemSuficiente.release(); //acorda Trem
-			}		
+				Semaforo.armazemSuficiente.release();//Acorda o trem
+			}
 		}
 	}
 }

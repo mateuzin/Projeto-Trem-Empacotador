@@ -1,483 +1,171 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
 package GUI;
 
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
-
+import java.awt.Font;
+import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
-import java.awt.BorderLayout;
 import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.sound.sampled.*;
-import java.awt.Color;
-import javax.swing.ImageIcon;
-import java.awt.Font;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.io.File;
-import java.io.IOException;
-
 import trem_empacotadorN1.Trem;
 import trem_empacotadorN1.empacotador;
-import javax.swing.DefaultComboBoxModel;
 
-
-public class Interface extends JFrame{
-
+public class Interface extends JFrame {
 	public JFrame frame;
 	public JTextField TempoDeV_field;
 	public JTextField CargaT_field;
 	public JTextField MaxDeposito_field;
-	public static int TempoTrem,CargaTrem,MaxArmazem;
-	public int E1,E2,E3,E4,E5,E6,E7,E8,E9,E10;
+	public static int TempoTrem;
+	public static int CargaTrem;
+	public static int MaxArmazem;
 	public int aux;
-	
-	
-	
-	
-	
-	
-	
+	private Interface2 window;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException{}
-
-	/**
-	 * Create the application.
-	 */
-	public Interface() {
-		initialize();
+	public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
+	public Interface() {
+		this.initialize();
+	}
+
 	public void initialize() {
-		
-		frame = new JFrame();
-		frame.getContentPane().setBackground(Color.WHITE);
-		frame.setBounds(100, 100, 399, 231);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-		frame.setResizable(false);
+		this.frame = new JFrame();
+		this.frame.getContentPane().setBackground(Color.WHITE);
+		this.frame.setBounds(100, 100, 399, 231);
+		this.frame.setDefaultCloseOperation(3);
+		this.frame.getContentPane().setLayout((LayoutManager) null);
+		this.frame.setResizable(false);
 		
 		JLabel lblNewLabel = new JLabel("Tempo de viagem");
-		lblNewLabel.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 16));
+		lblNewLabel.setFont(new Font("Tw Cen MT Condensed Extra Bold", 0, 16));
 		lblNewLabel.setBounds(10, 11, 152, 22);
-		frame.getContentPane().add(lblNewLabel);
 		
-		TempoDeV_field = new JTextField();
-		TempoDeV_field.setBounds(10, 37, 59, 20);
-		frame.getContentPane().add(TempoDeV_field);
-		TempoDeV_field.setColumns(10);
-		
+		this.frame.getContentPane().add(lblNewLabel);
+		this.TempoDeV_field = new JTextField();
+		this.TempoDeV_field.setBounds(10, 37, 59, 20);
+		this.frame.getContentPane().add(this.TempoDeV_field);
+		this.TempoDeV_field.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Carga Trem");
-		lblNewLabel_1.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 16));
+		lblNewLabel_1.setFont(new Font("Tw Cen MT Condensed Extra Bold", 0, 16));
 		lblNewLabel_1.setBounds(10, 67, 91, 14);
-		frame.getContentPane().add(lblNewLabel_1);
 		
-		CargaT_field = new JTextField();
-		CargaT_field.setBounds(10, 88, 59, 20);
-		frame.getContentPane().add(CargaT_field);
-		CargaT_field.setColumns(10);
+		this.frame.getContentPane().add(lblNewLabel_1);
+		this.CargaT_field = new JTextField();
+		this.CargaT_field.setBounds(10, 88, 59, 20);
+		this.frame.getContentPane().add(this.CargaT_field);
+		this.CargaT_field.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("Carga max\u00EDma do Deposito");
-		lblNewLabel_2.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 16));
+		JLabel lblNewLabel_2 = new JLabel("Carga maxíma do Deposito");
+		lblNewLabel_2.setFont(new Font("Tw Cen MT Condensed Extra Bold", 0, 16));
 		lblNewLabel_2.setBounds(10, 119, 176, 14);
-		frame.getContentPane().add(lblNewLabel_2);
 		
-		MaxDeposito_field = new JTextField();
-		MaxDeposito_field.setBounds(10, 144, 59, 20);
-		frame.getContentPane().add(MaxDeposito_field);
-		MaxDeposito_field.setColumns(10);
+		this.frame.getContentPane().add(lblNewLabel_2);
+		this.MaxDeposito_field = new JTextField();
+		this.MaxDeposito_field.setBounds(10, 144, 59, 20);
+		this.frame.getContentPane().add(this.MaxDeposito_field);
+		this.MaxDeposito_field.setColumns(10);
 		
-		JLabel lblNewLabel_3 = new JLabel("N\u00FAmero de Empacotadores");
-		lblNewLabel_3.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 16));
+		JLabel lblNewLabel_3 = new JLabel("Número de Empacotadores");
+		lblNewLabel_3.setFont(new Font("Tw Cen MT Condensed Extra Bold", 0, 16));
 		lblNewLabel_3.setBounds(187, 15, 186, 14);
-		frame.getContentPane().add(lblNewLabel_3);
 		
-		JComboBox NumeroEmpacotadores = new JComboBox();
+		this.frame.getContentPane().add(lblNewLabel_3);
+		final JComboBox NumeroEmpacotadores = new JComboBox();
+		
 		NumeroEmpacotadores.setMaximumRowCount(6);
 		NumeroEmpacotadores.setForeground(Color.BLACK);
-		NumeroEmpacotadores.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
+		NumeroEmpacotadores.setModel(new DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
 		NumeroEmpacotadores.setBounds(187, 36, 59, 22);
-		frame.getContentPane().add(NumeroEmpacotadores);
 		
+		this.frame.getContentPane().add(NumeroEmpacotadores);
 		JButton btnNewButton = new JButton("Prosseguir");
+		
 		btnNewButton.setBackground(Color.WHITE);
-		btnNewButton.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 16));
+		btnNewButton.setFont(new Font("Tw Cen MT Condensed Extra Bold", 0, 16));
 		btnNewButton.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
-				
-				try{
+				try {
+					Interface.TempoTrem = Integer.parseInt(Interface.this.TempoDeV_field.getText());
+					Interface.CargaTrem = Integer.parseInt(Interface.this.CargaT_field.getText());
+					Interface.MaxArmazem = Integer.parseInt(Interface.this.MaxDeposito_field.getText());
+				} catch (NumberFormatException var7) {
+					JOptionPane.showMessageDialog((Component) null, "Por favor insira valores númericos inteiros");
+					JOptionPane.showMessageDialog((Component) null, "Programa encerrando");
+					System.exit(0);
+				}
 
-					TempoTrem =Integer.parseInt(TempoDeV_field.getText());
-					CargaTrem =Integer.parseInt(CargaT_field.getText());
-					MaxArmazem =Integer.parseInt(MaxDeposito_field.getText());
-					
-				}catch(NumberFormatException ex) {
-				   
-					JOptionPane.showMessageDialog(null,"Por favor insira valores númericos inteiros");
-					JOptionPane.showMessageDialog(null,"Programa encerrando");
-					System.exit(0);
-					
-				}
-				
-				if(CargaTrem>MaxArmazem) {
-					JOptionPane.showMessageDialog(null,"Carga máxima do deposito deve ser maior do que a Carga do Trem");
-					JOptionPane.showMessageDialog(null,"Programa encerrando");
+				if (Interface.CargaTrem > Interface.MaxArmazem) {
+					JOptionPane.showMessageDialog((Component) null,
+							"Carga máxima do deposito deve ser maior do que a Carga do Trem");
+					JOptionPane.showMessageDialog((Component) null, "Programa encerrando");
 					System.exit(0);
 				}
-				
-				Trem piui = new Trem (TempoTrem); // trem demora x tempo para ir de A para B
-				
-				aux = NumeroEmpacotadores.getSelectedIndex()+1;
-				
-				switch (aux) 
-				{
-					case 1: 
-						try{
-							E1 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E1"));
-							//BOTAR 
-						}catch(NumberFormatException ex) {
-						   
-							JOptionPane.showMessageDialog(null,"Por favor insira valores númericos inteiros");		
-							JOptionPane.showMessageDialog(null,"Programa encerrando");
-							System.exit(0);
-						}
-						
-						
-						empacotador a1 = new empacotador (E1);
-						piui.start();
-						a1.start (); 
-						break;
-					case 2: 
-						try{
-							E1 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E1"));
-							E2 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E2"));
-							//BOTAR 
-						}catch(NumberFormatException ex) {
-						   
-							JOptionPane.showMessageDialog(null,"Por favor insira valores númericos inteiros");		
-							JOptionPane.showMessageDialog(null,"Programa encerrando");
-							System.exit(0);
-						}
-						
-						
-						empacotador b1 = new empacotador (E1);
-						empacotador b2 = new empacotador (E2); 
-						
-						piui.start();
-						b1.start (); 
-						b2.start ();
-						break;
-					case 3: 
-						try{
-							E1 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E1"));
-							E2 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E2"));
-							E3 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E3"));
-							//BOTAR 
-						}catch(NumberFormatException ex) {
-						   
-							JOptionPane.showMessageDialog(null,"Por favor insira valores númericos inteiros");		
-							JOptionPane.showMessageDialog(null,"Programa encerrando");
-							System.exit(0);
-						}
-						
-						
-						empacotador c1 = new empacotador (E1);
-						empacotador c2 = new empacotador (E2); 
-						empacotador c3 = new empacotador (E3);
-						
-						piui.start();
-						c1.start (); 
-						c2.start ();
-						c3.start();	
-						break;
-					case 4: 
-						try{
-							E1 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E1"));
-							E2 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E2"));
-							E3 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E3"));
-							E4 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E4"));
-							//BOTAR 
-						}catch(NumberFormatException ex) {
-						   
-							JOptionPane.showMessageDialog(null,"Por favor insira valores númericos inteiros");		
-							JOptionPane.showMessageDialog(null,"Programa encerrando");
-							System.exit(0);
-						}
-						
-						
-						empacotador d1 = new empacotador (E1);
-						empacotador d2 = new empacotador (E2); 
-						empacotador d3 = new empacotador (E3);
-						empacotador d4 = new empacotador (E4); 
-						
-						piui.start();
-						d1.start (); 
-						d2.start ();
-						d3.start();	
-						d4.start (); 
-						break;
-					case 5: 
-						try{
-							E1 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E1"));
-							E2 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E2"));
-							E3 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E3"));
-							E4 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E4"));
-							E5 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E5"));
-							//BOTAR 
-						}catch(NumberFormatException ex) {
-						   
-							JOptionPane.showMessageDialog(null,"Por favor insira valores númericos inteiros");		
-							JOptionPane.showMessageDialog(null,"Programa encerrando");
-							System.exit(0);
-						}
-						
-						
-						empacotador e1 = new empacotador (E1);
-						empacotador e2 = new empacotador (E2); 
-						empacotador e3 = new empacotador (E3);
-						empacotador e4 = new empacotador (E4); 
-						empacotador e5 = new empacotador (E5); 
-						
-						piui.start();
-						e1.start (); 
-						e2.start ();
-						e3.start();	
-						e4.start (); 
-						e5.start ();
-						break;
-					case 6: 
-						try{
-							E1 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E1"));
-							E2 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E2"));
-							E3 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E3"));
-							E4 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E4"));
-							E5 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E5"));
-							E6 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E6"));
-							//BOTAR 
-						}catch(NumberFormatException ex) {
-						   
-							JOptionPane.showMessageDialog(null,"Por favor insira valores númericos inteiros");		
-							JOptionPane.showMessageDialog(null,"Programa encerrando");
-							System.exit(0);
-						}
-						
-						empacotador f1 = new empacotador (E1);
-						empacotador f2 = new empacotador (E2); 
-						empacotador f3 = new empacotador (E3);
-						empacotador f4 = new empacotador (E4); 
-						empacotador f5 = new empacotador (E5); 
-						empacotador f6 = new empacotador (E6);
-						
-						piui.start();
-						f1.start (); 
-						f2.start ();
-						f3.start();	
-						f4.start (); 
-						f5.start ();
-						f6.start();	
-						break;
-					case 7: 
-						try{
-							E1 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E1"));
-							E2 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E2"));
-							E3 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E3"));
-							E4 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E4"));
-							E5 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E5"));
-							E6 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E6"));
-							E7 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E7"));
-							//BOTAR 
-						}catch(NumberFormatException ex) {
-						   
-							JOptionPane.showMessageDialog(null,"Por favor insira valores númericos inteiros");		
-							JOptionPane.showMessageDialog(null,"Programa encerrando");
-							System.exit(0);
-						}
-						
-						empacotador g1 = new empacotador (E1);
-						empacotador g2 = new empacotador (E2); 
-						empacotador g3 = new empacotador (E3);
-						empacotador g4 = new empacotador (E4); 
-						empacotador g5 = new empacotador (E5); 
-						empacotador g6 = new empacotador (E6);
-						empacotador g7 = new empacotador (E7); 
-						
-						piui.start();
-						g1.start (); 
-						g2.start ();
-						g3.start();	
-						g4.start (); 
-						g5.start ();
-						g6.start();	
-						g7.start ();
-						break;
-					case 8: 
-						try{
-							E1 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E1"));
-							E2 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E2"));
-							E3 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E3"));
-							E4 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E4"));
-							E5 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E5"));
-							E6 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E6"));
-							E7 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E7"));
-							E8 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E8"));
-							//BOTAR 
-						}catch(NumberFormatException ex) {
-						   
-							JOptionPane.showMessageDialog(null,"Por favor insira valores númericos inteiros");		
-							JOptionPane.showMessageDialog(null,"Programa encerrando");
-							System.exit(0);
-						}
-						
-						empacotador h1 = new empacotador (E1);
-						empacotador h2 = new empacotador (E2); 
-						empacotador h3 = new empacotador (E3);
-						empacotador h4 = new empacotador (E4); 
-						empacotador h5 = new empacotador (E5); 
-						empacotador h6 = new empacotador (E6);
-						empacotador h7 = new empacotador (E7); 
-						empacotador h8 = new empacotador (E8); 
-						
-						piui.start();
-						h1.start (); 
-						h2.start ();
-						h3.start();	
-						h4.start (); 
-						h5.start ();
-						h6.start();	
-						h7.start (); 
-						h8.start ();
-						break;
-					case 9: 
-						try{
-							E1 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E1"));
-							E2 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E2"));
-							E3 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E3"));
-							E4 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E4"));
-							E5 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E5"));
-							E6 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E6"));
-							E7 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E7"));
-							E8 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E8"));
-							E9 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E9"));
-							//BOTAR 
-						}catch(NumberFormatException ex) {
-						   
-							JOptionPane.showMessageDialog(null,"Por favor insira valores númericos inteiros");		
-							JOptionPane.showMessageDialog(null,"Programa encerrando");
-							System.exit(0);
-						}
-						
-						
-						empacotador i1 = new empacotador (E1);
-						empacotador i2 = new empacotador (E2);
-						empacotador i3 = new empacotador (E3);
-						empacotador i4 = new empacotador (E4); 
-						empacotador i5 = new empacotador (E5); 
-						empacotador i6 = new empacotador (E6);
-						empacotador i7 = new empacotador (E7); 
-						empacotador i8 = new empacotador (E8); 
-						empacotador i9 = new empacotador (E9);
-						
-						piui.start();
-						i1.start (); 
-						i2.start ();
-						i3.start();	
-						i4.start (); 
-						i5.start ();
-						i6.start();	
-						i7.start (); 
-						i8.start ();
-						i9.start();
-						break;
-					case 10: 
-						try{
-							E1 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E1"));
-							E2 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E2"));
-							E3 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E3"));
-							E4 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E4"));
-							E5 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E5"));
-							E6 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E6"));
-							E7 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E7"));
-							E8 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E8"));
-							E9 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E9"));
-							E10 =Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E10"));
-							
-							//BOTAR 
-						}catch(NumberFormatException ex) {
-						   
-							JOptionPane.showMessageDialog(null,"Por favor insira valores númericos inteiros");		
-							JOptionPane.showMessageDialog(null,"Programa encerrando");
-							System.exit(0);
-						}
-						
-						
-						empacotador j1 = new empacotador (E1);
-						empacotador j2 = new empacotador (E2); 
-						empacotador j3 = new empacotador (E3);
-						empacotador j4 = new empacotador (E4); 
-						empacotador j5 = new empacotador (E5); 
-						empacotador j6 = new empacotador (E6);
-						empacotador j7 = new empacotador (E7); 
-						empacotador j8 = new empacotador (E8); 
-						empacotador j9 = new empacotador (E9);
-						empacotador j10 = new empacotador (E10);
-						piui.start();
-						j1.start (); 
-						j2.start ();
-						j3.start();	
-						j4.start (); 
-						j5.start ();
-						j6.start();	
-						j7.start (); 
-						j8.start ();
-						j9.start();	
-						j10.start();
-						
-						break;
+
+				Trem piui = new Trem((double) Interface.TempoTrem);
+				Interface.this.aux = NumeroEmpacotadores.getSelectedIndex() + 1;
+				List<empacotador> lista = new ArrayList();
+
+				for (int i = 1; i <= Interface.this.aux; ++i) {
+					try {
+						int emp = Integer
+								.parseInt(JOptionPane.showInputDialog("Digite o tempo de empacotamento do E" + i));
+						lista.add(new empacotador(i, emp, Interface.this));
+					} catch (NumberFormatException var6) {
+						JOptionPane.showMessageDialog((Component) null, "Por favor insira valores númericos inteiros");
+						JOptionPane.showMessageDialog((Component) null, "Programa encerrando");
+						System.exit(0);
+					}
+				}
+
+				piui.start();
+				Iterator var9 = lista.iterator();
+
+				while (var9.hasNext()) {
+					empacotador empacotarTemp = (empacotador) var9.next();
+					empacotarTemp.start();
 				}
 
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							Interface2 window = new Interface2();
-							window.frame.setVisible(true);
-						} catch (Exception e) {
-							e.printStackTrace();
+							Interface.this.window = new Interface2();
+							Interface.this.window.frame.setVisible(true);
+						} catch (Exception var2) {
+							var2.printStackTrace();
 						}
+
 					}
 				});
-				
-				
-			} //botão de prosseguir
+			}
 		});
-		
 		btnNewButton.setBounds(257, 142, 116, 23);
-		frame.getContentPane().add(btnNewButton);
+		this.frame.getContentPane().add(btnNewButton);
 	}
-	
-}
 
-/*File file = new File("fortaleza.wav");
-AudioInputStream audioStream;
-try {
-	audioStream = AudioSystem.getAudioInputStream(file);
-	Clip clip = AudioSystem.getClip();
-	clip.open(audioStream);
-	clip.start();
-} catch (UnsupportedAudioFileException | IOException e1) {
-	// TODO Auto-generated catch block
-	e1.printStackTrace();
-} catch (LineUnavailableException e1) {
-	// TODO Auto-generated catch block
-	e1.printStackTrace();
-}*/
+	public void changeImg(int empacotador, String img) {
+		if (this.window != null) {
+			this.window.changeImg(empacotador, img);
+		}
+
+	}
+}

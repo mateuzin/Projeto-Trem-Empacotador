@@ -3,7 +3,7 @@ package trem_empacotadorN1;
 import java.util.concurrent.Semaphore;
 
 public class Trem extends Thread {
-	public double tv; // tv = tempo de viagem
+	public static double tv; // tv = tempo de viagem
 
 	public Trem(double tv) {
 		this.tv = tv * 1000;
@@ -19,11 +19,7 @@ public class Trem extends Thread {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-			} 
-
-			
-
-			
+			}
 
 			try {
 				Semaforo.mutex.acquire();
@@ -33,21 +29,18 @@ public class Trem extends Thread {
 			if (armazem.Armazem_atual >= armazem.N) {// Se o número de caixas já empacotadas for maior do que N
 
 				armazem.Armazem_atual = armazem.Armazem_atual - armazem.N; // Retira o número de caixas que o trem
-				Semaforo.armazemLim.release(armazem.N); // acorda empacotador															// precisa | PARTE CRITICA
+				Semaforo.armazemLim.release(armazem.N); // acorda empacotador // precisa | PARTE CRITICA
 				System.out.println("Trem pegou a carga e iniciou viagem");
 				System.out.println("Número de caixas atualmente: " + armazem.Armazem_atual);
 
 			}
 
 			Semaforo.mutex.release();
-			
-			
-						
+
 			long time = System.currentTimeMillis();
 			while (System.currentTimeMillis() - time < tv / 2) {
 			}
-			
-			
+
 			System.out.println("Trem chegou em B");
 			System.out.println("Trem está voltando para A");
 
@@ -55,7 +48,7 @@ public class Trem extends Thread {
 			}
 
 			System.out.println("Trem chegou em A novamente");
-			
+
 		}
 
 	}
