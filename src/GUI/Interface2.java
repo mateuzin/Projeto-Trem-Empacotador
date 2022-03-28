@@ -59,7 +59,6 @@ public class Interface2 extends JFrame {
 		progressBar = new JProgressBar();
 		progressBar.setForeground(Color.GREEN);
 		progressBar.setStringPainted(true);
-		progressBar.setIndeterminate(false);
 		progressBar.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 30));
 		progressBar.setBounds(27, 389, 1446, 40);
 		progressBar.setMaximum(Interface.MaxArmazem);

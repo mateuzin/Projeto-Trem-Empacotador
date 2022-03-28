@@ -121,7 +121,7 @@ public class Interface extends JFrame {
 					System.exit(0);
 				}
 
-				Trem piui = new Trem((double) Interface.TempoTrem);
+				Trem piui = new Trem((double) Interface.TempoTrem,Interface.this);
 				Interface.this.aux = NumeroEmpacotadores.getSelectedIndex() + 1;
 				List<empacotador> lista = new ArrayList();
 
