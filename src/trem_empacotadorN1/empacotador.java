@@ -21,15 +21,15 @@ public class empacotador extends Thread {
 			
 			
 			long time = System.currentTimeMillis();
-
+			
 			while (System.currentTimeMillis() - time < (long) this.te/2) {
 				this.mainInterface.changeImg(this.id, Interface2.Empacotando);
 			}
+			this.mainInterface.SentidoE(this.id,"Baixo", this.te);
 			while (System.currentTimeMillis() - time < (long) this.te) {
 				this.mainInterface.changeImg(this.id, Interface2.Terminou);
 			}
 			
-
 			try {
 				if (Semaforo.armazemLim.availablePermits() == 0) {
 					System.out.println("Armazem lotado, Empacotador " + id + " " + "  vai dormir ");
@@ -41,7 +41,7 @@ public class empacotador extends Thread {
 				var5.printStackTrace();
 			}
 			
-			
+			this.mainInterface.changeImg(this.id, Interface2.Voltando);
 			try {
 				Semaforo.mutex.acquire();
 			} catch (InterruptedException var4) {
@@ -49,10 +49,12 @@ public class empacotador extends Thread {
 			}
 
 			++armazem.Armazem_atual;
-
+			
 			System.out.println("Empacotador " + this.getName() + " " + "embalou uma caixa ");
 			System.out.println("Número de caixas no armazem atualmente: " + armazem.Armazem_atual);
 			this.Progress.Progress(armazem.Armazem_atual);
+			
+			this.mainInterface.SentidoE(this.id,"Cima", this.te);
 			Semaforo.mutex.release();
 			if (armazem.Armazem_atual >= armazem.N) {
 				Semaforo.armazemSuficiente.release();//Acorda o trem

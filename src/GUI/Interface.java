@@ -182,4 +182,11 @@ public class Interface extends JFrame {
 		}
 
 	}
+	
+	public void SentidoE(int empacotador,String sentido,double te) {
+		if (this.window != null) {
+			this.window.sentidoEmpacotador(empacotador,sentido,te);
+		}
+
+	}
 }

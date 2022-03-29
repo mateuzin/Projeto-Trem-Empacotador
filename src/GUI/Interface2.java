@@ -109,6 +109,16 @@ public class Interface2 extends JFrame {
 			animate.jLabelXLeft(1332, -14, 1, 1, imagem_trem);
 		}
 	}
+	public void sentidoEmpacotador(int empacotador,String receba,double te) {
+		Kensoft animate = new Kensoft();
+		if(receba == "Baixo") {
+			animate.jLabelYDown(33, 234, 10, 1, empacotadores[empacotador - 1]);
+		}
+		
+		if(receba == "Cima") {
+			animate.jLabelYUp(234, 33, 10, 1, empacotadores[empacotador - 1]);
+		}
+	}
 	
 	
 }
