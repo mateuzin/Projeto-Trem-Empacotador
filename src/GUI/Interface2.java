@@ -19,7 +19,7 @@ public class Interface2 extends JFrame {
 	public static String Dormindo = "/GUI/empacotadorDormindo.png";
 	public static String Empacotando = "/GUI/empacotadorEmpacotando.png";
 	public static String Terminou = "/GUI/empacotadorEmpacotado.png";
-	public static String Inativo = "/GUI/empacotadorInativo.png";
+	public static String Inativo = "/GUI/empacotadorvazio.png";
 	public static String Voltando = "/GUI/empacotadorSemCaixa(voltando).png";
 	private JLabel[] empacotadores;
 	private JProgressBar progressBar;
@@ -43,6 +43,7 @@ public class Interface2 extends JFrame {
 		frame.getContentPane().setLayout(null);
 		frame.getContentPane().setLayout(null);
 		frame.getContentPane().setLayout(null);
+		frame.getContentPane().setLayout(null);
 		
 		imagem_trem = new JLabel("");
 		imagem_trem.setIcon(new ImageIcon(Interface2.class.getResource("/GUI/trem.png")));
@@ -56,7 +57,7 @@ public class Interface2 extends JFrame {
 		for (int i = 0; i < 10; ++i) {
 			label = new JLabel("");
 			label.setIcon(new ImageIcon(Interface2.class.getResource(Inativo)));
-			label.setBounds(69 + 144 * i, 37, 64, 89);
+			label.setBounds(69 + 144 * i, 33, 64, 89);
 			this.frame.getContentPane().add(label);
 			this.empacotadores[i] = label;
 		}
@@ -101,11 +102,11 @@ public class Interface2 extends JFrame {
 	public void sentidoTrem(String receba,double tv) {
 		Kensoft animate = new Kensoft();
 		if(receba == "Direita") {
-			animate.jLabelXRight(-14, 1332, 10, 1, imagem_trem);
+			animate.jLabelXRight(-14, 1332, 1, 1, imagem_trem);
 		}
 		
 		if(receba == "Esquerda") {
-			animate.jLabelXLeft(1332, -14, 10, 1, imagem_trem);
+			animate.jLabelXLeft(1332, -14, 1, 1, imagem_trem);
 		}
 	}
 	
