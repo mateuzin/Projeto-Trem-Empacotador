@@ -23,16 +23,22 @@ public class empacotador extends Thread {
 			long time = System.currentTimeMillis();
 			
 			while (System.currentTimeMillis() - time < (long) this.te/2) {
-				this.mainInterface.changeImg(this.id, Interface2.Empacotando);
 			}
+			this.mainInterface.changeImg(this.id, Interface2.Empacotando);
+			
+			while (System.currentTimeMillis() - time < (long) this.te*3/4) {	
+			}
+			this.mainInterface.changeImg(this.id, Interface2.Terminou);
 			this.mainInterface.SentidoE(this.id,"Baixo", this.te);
-			while (System.currentTimeMillis() - time < (long) this.te) {
-				this.mainInterface.changeImg(this.id, Interface2.Terminou);
+			
+			while (System.currentTimeMillis() - time < (long) this.te) {	
 			}
+			this.mainInterface.changeImg(this.id, Interface2.Voltando);
 			
 			try {
 				if (Semaforo.armazemLim.availablePermits() == 0) {
 					System.out.println("Armazem lotado, Empacotador " + id + " " + "  vai dormir ");
+					
 					this.mainInterface.changeImg(this.id, Interface2.Dormindo);
 				}
 
@@ -41,7 +47,7 @@ public class empacotador extends Thread {
 				var5.printStackTrace();
 			}
 			
-			this.mainInterface.changeImg(this.id, Interface2.Voltando);
+			//this.mainInterface.changeImg(this.id, Interface2.Voltando);
 			try {
 				Semaforo.mutex.acquire();
 			} catch (InterruptedException var4) {
