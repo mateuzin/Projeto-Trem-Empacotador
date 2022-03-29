@@ -19,11 +19,16 @@ public class empacotador extends Thread {
 	public void run() {
 		while (true) {
 			
-			this.mainInterface.changeImg(this.id, Interface2.Empacotando);
+			
 			long time = System.currentTimeMillis();
 
-			while (System.currentTimeMillis() - time < (long) this.te) {
+			while (System.currentTimeMillis() - time < (long) this.te/2) {
+				this.mainInterface.changeImg(this.id, Interface2.Empacotando);
 			}
+			while (System.currentTimeMillis() - time < (long) this.te) {
+				this.mainInterface.changeImg(this.id, Interface2.Terminou);
+			}
+			
 
 			try {
 				if (Semaforo.armazemLim.availablePermits() == 0) {

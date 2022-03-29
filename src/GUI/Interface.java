@@ -27,6 +27,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import trem_empacotadorN1.Trem;
 import trem_empacotadorN1.empacotador;
+import KentHipos.Kensoft;
 
 public class Interface extends JFrame {
 	public JFrame frame;
@@ -121,7 +122,7 @@ public class Interface extends JFrame {
 					System.exit(0);
 				}
 
-				Trem piui = new Trem((double) Interface.TempoTrem,Interface.this);
+				Trem piui = new Trem((double) Interface.TempoTrem,Interface.this,Interface.this);
 				Interface.this.aux = NumeroEmpacotadores.getSelectedIndex() + 1;
 				List<empacotador> lista = new ArrayList();
 
@@ -155,6 +156,7 @@ public class Interface extends JFrame {
 
 					}
 				});
+
 			}
 		});
 		btnNewButton.setBounds(257, 142, 116, 23);
@@ -171,6 +173,12 @@ public class Interface extends JFrame {
 	public void Progress(int atual) {
 		if (this.window != null) {
 			this.window.progress(atual);
+		}
+	}
+	
+	public void SentidoT(String sentido,double tv) {
+		if (this.window != null) {
+			this.window.sentidoTrem(sentido,tv);
 		}
 
 	}

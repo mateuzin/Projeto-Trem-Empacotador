@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
+import KentHipos.Kensoft;
 
 import java.awt.Color;
 
@@ -22,6 +23,7 @@ public class Interface2 extends JFrame {
 	public static String Voltando = "/GUI/empacotadorSemCaixa(voltando).png";
 	private JLabel[] empacotadores;
 	private JProgressBar progressBar;
+	private JLabel imagem_trem;
 
 	public static void main(String[] args) {
 	}
@@ -31,6 +33,7 @@ public class Interface2 extends JFrame {
 	}
 
 	public void initialize() {
+		
 		this.frame = new JFrame();
 		this.frame.setBounds(100, 100, 1516, 789);
 		this.frame.setDefaultCloseOperation(3);
@@ -39,11 +42,15 @@ public class Interface2 extends JFrame {
 		frame.getContentPane().setLayout(null);
 		frame.getContentPane().setLayout(null);
 		frame.getContentPane().setLayout(null);
-		JLabel imagem_trem = new JLabel("");
+		frame.getContentPane().setLayout(null);
+		
+		imagem_trem = new JLabel("");
 		imagem_trem.setIcon(new ImageIcon(Interface2.class.getResource("/GUI/trem.png")));
 		imagem_trem.setBounds(-14, 580, 168, 56);
 		this.frame.getContentPane().add(imagem_trem);
 		this.empacotadores = new JLabel[10];
+		
+		
 
 		JLabel label;
 		for (int i = 0; i < 10; ++i) {
@@ -90,4 +97,17 @@ public class Interface2 extends JFrame {
 		this.progressBar.setValue(atual);
 		
 	}
+	
+	public void sentidoTrem(String receba,double tv) {
+		Kensoft animate = new Kensoft();
+		if(receba == "Direita") {
+			animate.jLabelXRight(-14, 1332, 10, 1, imagem_trem);
+		}
+		
+		if(receba == "Esquerda") {
+			animate.jLabelXLeft(1332, -14, 10, 1, imagem_trem);
+		}
+	}
+	
+	
 }
