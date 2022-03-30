@@ -101,12 +101,15 @@ public class Interface2 extends JFrame {
 	
 	public void sentidoTrem(String receba,double tv) {
 		Kensoft animate = new Kensoft();
+		tv/=2;
+		tv/=1346;
+		int tempot = (int) Math.round(tv);
 		if(receba == "Direita") {
-			animate.jLabelXRight(-14, 1332, 1, 1, imagem_trem);
+			animate.jLabelXRight(-14, 1332, tempot-2, 1, imagem_trem);
 		}
 		
 		if(receba == "Esquerda") {
-			animate.jLabelXLeft(1332, -14, 1, 1, imagem_trem);
+			animate.jLabelXLeft(1332, -14, tempot-2, 1, imagem_trem);
 		}
 	}
 	public void sentidoEmpacotador(int empacotador,String receba,double te) {

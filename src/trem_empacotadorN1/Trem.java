@@ -39,19 +39,18 @@ public class Trem extends Thread {
 				Semaforo.armazemLim.release(armazem.N); // acorda empacotador // precisa | PARTE CRITICA
 				System.out.println("Trem pegou a carga e iniciou viagem");
 				System.out.println("Número de caixas atualmente: " + armazem.Armazem_atual);
-
+				this.SentidoT.SentidoT("Direita",tv);
 			}
 
 			Semaforo.mutex.release();
 			
-			this.SentidoT.SentidoT("Direita",tv);
 			long time = System.currentTimeMillis();
+			
 			while (System.currentTimeMillis() - time < tv / 2) {
 			}
 			this.SentidoT.SentidoT("Esquerda",tv);
 			System.out.println("Trem chegou em B");
 			System.out.println("Trem está voltando para A");
-			
 			while (System.currentTimeMillis() - time < tv) {
 			}
 			
