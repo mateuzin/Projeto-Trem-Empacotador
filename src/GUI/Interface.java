@@ -28,6 +28,10 @@ import javax.swing.JTextField;
 import trem_empacotadorN1.Trem;
 import trem_empacotadorN1.empacotador;
 import KentHipos.Kensoft;
+import java.io.File;
+import java.io.IOException;
+import javax.sound.sampled.*;
+
 
 public class Interface extends JFrame {
 	public JFrame frame;
@@ -48,6 +52,10 @@ public class Interface extends JFrame {
 	}
 
 	public void initialize() {
+		
+
+		File file = new File("fortaleza.wav");
+		
 		this.frame = new JFrame();
 		this.frame.getContentPane().setBackground(Color.WHITE);
 		this.frame.setBounds(100, 100, 399, 231);
@@ -155,7 +163,22 @@ public class Interface extends JFrame {
 						}
 
 					}
+					
 				});
+				
+				AudioInputStream audioStream;
+				try {
+					audioStream = AudioSystem.getAudioInputStream(file);
+					Clip clip = AudioSystem.getClip();
+					clip.open(audioStream);
+					clip.start();
+				} catch (UnsupportedAudioFileException | IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (LineUnavailableException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
 			}
 		});
