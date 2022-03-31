@@ -31,6 +31,8 @@ import KentHipos.Kensoft;
 import java.io.File;
 import java.io.IOException;
 import javax.sound.sampled.*;
+import javax.swing.ImageIcon;
+import java.awt.BorderLayout;
 
 
 public class Interface extends JFrame {
@@ -58,55 +60,52 @@ public class Interface extends JFrame {
 		
 		this.frame = new JFrame();
 		this.frame.getContentPane().setBackground(Color.WHITE);
-		this.frame.setBounds(100, 100, 399, 231);
+		this.frame.setBounds(100, 100, 1021, 786);
 		this.frame.setDefaultCloseOperation(3);
 		this.frame.getContentPane().setLayout((LayoutManager) null);
 		this.frame.setResizable(false);
+		frame.getContentPane().setLayout(null);
+		frame.getContentPane().setLayout(null);
+		frame.getContentPane().setLayout(null);
+		frame.getContentPane().setLayout(null);
+		frame.getContentPane().setLayout(null);
+		frame.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Tempo de viagem");
-		lblNewLabel.setFont(new Font("Tw Cen MT Condensed Extra Bold", 0, 16));
-		lblNewLabel.setBounds(10, 11, 152, 22);
-		
-		this.frame.getContentPane().add(lblNewLabel);
 		this.TempoDeV_field = new JTextField();
-		this.TempoDeV_field.setBounds(10, 37, 59, 20);
+		TempoDeV_field.setBackground(Color.LIGHT_GRAY);
+		TempoDeV_field.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		TempoDeV_field.setForeground(Color.BLACK);
+		this.TempoDeV_field.setBounds(82, 185, 72, 43);
 		this.frame.getContentPane().add(this.TempoDeV_field);
 		this.TempoDeV_field.setColumns(10);
 		
-		JLabel lblNewLabel_1 = new JLabel("Carga Trem");
-		lblNewLabel_1.setFont(new Font("Tw Cen MT Condensed Extra Bold", 0, 16));
-		lblNewLabel_1.setBounds(10, 67, 91, 14);
-		
-		this.frame.getContentPane().add(lblNewLabel_1);
 		this.CargaT_field = new JTextField();
-		this.CargaT_field.setBounds(10, 88, 59, 20);
+		CargaT_field.setBackground(Color.LIGHT_GRAY);
+		CargaT_field.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		this.CargaT_field.setBounds(82, 463, 72, 43);
 		this.frame.getContentPane().add(this.CargaT_field);
 		this.CargaT_field.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("Carga maxíma do Deposito");
-		lblNewLabel_2.setFont(new Font("Tw Cen MT Condensed Extra Bold", 0, 16));
-		lblNewLabel_2.setBounds(10, 119, 176, 14);
-		
-		this.frame.getContentPane().add(lblNewLabel_2);
 		this.MaxDeposito_field = new JTextField();
-		this.MaxDeposito_field.setBounds(10, 144, 59, 20);
+		MaxDeposito_field.setBackground(Color.LIGHT_GRAY);
+		MaxDeposito_field.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		this.MaxDeposito_field.setBounds(82, 328, 72, 43);
 		this.frame.getContentPane().add(this.MaxDeposito_field);
 		this.MaxDeposito_field.setColumns(10);
 		
-		JLabel lblNewLabel_3 = new JLabel("Número de Empacotadores");
-		lblNewLabel_3.setFont(new Font("Tw Cen MT Condensed Extra Bold", 0, 16));
-		lblNewLabel_3.setBounds(187, 15, 186, 14);
-		
-		this.frame.getContentPane().add(lblNewLabel_3);
 		final JComboBox NumeroEmpacotadores = new JComboBox();
+		NumeroEmpacotadores.setBackground(Color.LIGHT_GRAY);
+		NumeroEmpacotadores.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		
-		NumeroEmpacotadores.setMaximumRowCount(6);
+		NumeroEmpacotadores.setMaximumRowCount(4);
 		NumeroEmpacotadores.setForeground(Color.BLACK);
 		NumeroEmpacotadores.setModel(new DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
-		NumeroEmpacotadores.setBounds(187, 36, 59, 22);
+		NumeroEmpacotadores.setBounds(869, 428, 107, 55);
 		
 		this.frame.getContentPane().add(NumeroEmpacotadores);
-		JButton btnNewButton = new JButton("Prosseguir");
+		JButton btnNewButton = new JButton("");
+		btnNewButton.setIcon(new ImageIcon(Interface.class.getResource("/GUI/Play (1).jpg")));
+		btnNewButton.setSelectedIcon(new ImageIcon(Interface.class.getResource("/GUI/trempequeno.png")));
 		
 		btnNewButton.setBackground(Color.WHITE);
 		btnNewButton.setFont(new Font("Tw Cen MT Condensed Extra Bold", 0, 16));
@@ -182,8 +181,14 @@ public class Interface extends JFrame {
 
 			}
 		});
-		btnNewButton.setBounds(257, 142, 116, 23);
+		btnNewButton.setBounds(742, 649, 253, 53);
 		this.frame.getContentPane().add(btnNewButton);
+		
+		JLabel Cenario = new JLabel("New label");
+		Cenario.setBackground(Color.LIGHT_GRAY);
+		Cenario.setIcon(new ImageIcon(Interface.class.getResource("/GUI/Interface1Imagem.jpg")));
+		Cenario.setBounds(0, 0, 1008, 750);
+		frame.getContentPane().add(Cenario);
 	}
 
 	public void changeImg(int empacotador, String img) {

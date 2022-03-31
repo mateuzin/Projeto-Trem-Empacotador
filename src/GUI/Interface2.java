@@ -89,7 +89,7 @@ public class Interface2 extends JFrame {
 	
 	public void progress(int atual) {
 		if(atual == Interface.MaxArmazem) {
-			this.progressBar.setString("ARMAZEM LOTADO");
+			this.progressBar.setString("ARMAZÉM LOTADO = " + String.valueOf(atual));
 		}
 		else {
 			this.progressBar.setString("Número de caixas no deposito = " + String.valueOf(atual));
