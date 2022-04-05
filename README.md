@@ -33,3 +33,5 @@ status “empacotando”.
 A interface deve mostrar, a cada instante, a quantidade de caixas armazenadas no depósito e o
 status de cada processo empacotador (empacotando, colocando a caixa no depósito ou dormindo)
 e do processo trem (viajando de **A** para **B**, viajando de **B**, para **A** ou parado).
+
+Foi utilizada a versão 17 do JDK nesse projeto, podendo apresentar possiveis erros de compatibilidade com versões anteriores.
