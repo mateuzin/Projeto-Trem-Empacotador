@@ -23,6 +23,9 @@ Durante a criação do thread trem devem ser definidos os seguintes parâmetros:
 - **tv** = tempo de viagem (tempo que o trem gasta para viajar de A até B e vice-versa). A
 interface deve mostrar que o processo trem está executando durante todo este tempo com o
 status “viajando de A para B” ou “viajando de B para A”.  
+
+![TremDeCarga](https://github.com/mateuzin/Projeto-Trem-Empacotador/assets/75508372/8fe849de-b3b7-4b51-b958-852cc93b9493)
+
 ## Thread Empacotador:  
 Durante a criação do thread empacotador devem ser definidos os seguintes parâmetros:  
 - **id** = identificador do empacotador.
@@ -35,3 +38,6 @@ status de cada processo empacotador (empacotando, colocando a caixa no depósito
 e do processo trem (viajando de **A** para **B**, viajando de **B**, para **A** ou parado).
 
 Foi utilizada a versão 17 do JDK nesse projeto, podendo apresentar possiveis erros de compatibilidade com versões anteriores.
+
+![Empacotadores](https://github.com/mateuzin/Projeto-Trem-Empacotador/assets/75508372/d9d7c921-e6b4-4e9b-b59b-5b1b8e54ceb9)
+
